@@ -24,42 +24,38 @@ public class SortProgramming extends Menu<String> {
         algorithm = new Algorithm();
         size_array = element.getSize_array();
         array = element.getArray();
-        //1. Enter a possitive number
-        //size_array = library.getInt("Enter number of array", 1, 100);
-        //2. Create array by generate random integer in range
-        //array = library.createArray(size_array);
+
     }
 
     @Override
-            public void execute(int n) {
-                int value;
-                switch (n) {
-                    case 1:
-                        algorithm.buddleSort(array);
-                        library.display(array);
-                        value = library.getInt("\nEnter number to find: ", 1, 100);
-                        if (algorithm.linearSearch(array, value) == -1) {
-                            System.out.println("No value in array");
-                        } else {
-                            System.out.println("Found value: " + value + " at index: " + algorithm.linearSearch(array, value));
-                        }
-                        break;
-                    case 2:
-                        algorithm.buddleSort(array);
-                        library.display(array);
-                        value = library.getInt("\nEnter number to find: ", 1, 100);
-                        if (algorithm.binarySearch(array, value) == -1) {
-                            System.out.println("No value in array");
-                        } else {
-                            System.out.println("Found value: " + value + " at index: " + algorithm.binarySearch(array, value));
-                        }
-                        break;
-
-                    case 3:
-                        System.exit(0);
-                        break;
+    public void execute(int n) {
+        int value;
+        switch (n) {
+            case 1:
+                algorithm.buddleSort(array);
+                library.display(array);
+                value = library.getInt("\nEnter number to find: ", 1, 100);
+                if (algorithm.linearSearch(array, value) == -1) {
+                    System.out.println("No value in array");
+                } else {
+                    System.out.println("Found value: " + value + " at index: " + algorithm.linearSearch(array, value));
                 }
-            }
+                break;
+            case 2:
+                algorithm.buddleSort(array);
+                library.display(array);
+                value = library.getInt("\nEnter number to find: ", 1, 100);
+                if (algorithm.binarySearch(array, value) == -1) {
+                    System.out.println("No value in array");
+                } else {
+                    System.out.println("Found value: " + value + " at index: " + algorithm.binarySearch(array, value));
+                }
+                break;
 
-   
+            case 3:
+                System.exit(0);
+                break;
+        }
+    }
+
 }

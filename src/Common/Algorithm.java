@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Common;
 
-/**
- *
- * @author ACER
- */
 public class Algorithm {
 
     public void buddleSort(int[] array) {
@@ -22,66 +14,31 @@ public class Algorithm {
         }
     }
 
-    public int partition(int[] array, int left, int right) {
-        //exam: 1 12 5 [7] 6 9 2 : 7 is pivot
-        //Run from left: i - Run from right: j
-        int i = left, j = right;
-        //Instance a variable: pivot - trục
-        int pivot = array[(left + right) / 2];
-        //Create a temp variable
-        int tmp;
-        while (i <= j) {
-            while (array[i] < pivot) {
-                i++;
-            }
-            while (array[j] > pivot) {
-                j--;
-            }
-            if (i <= j) {
-                //Execute swap between value of index [i] and value of index [j]
-                tmp = array[i];
-                array[i] = array[j];
-                array[j] = tmp;
-                i++;
-                j--;
-            }
-        };
-        return i;
-    }
-
-    public void quickSort(int[] array, int left, int right) {
-        //Search index of array - vách ngăn
-        int index = partition(array, left, right);
-        if (left < index - 1) {
-            quickSort(array, left, index - 1);
-        }
-        if (index < right) {
-            quickSort(array, index, right);
-        }
-    }
-    
     public int linearSearch(int[] array, int value) {
-        for (int i=0;i<array.length;i++) {
-            if (array[i]==value) return i;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == value) {
+                return i;
+            }
         }
         return -1; // target not found
     }
-   public int binarySearch(int[] arr, int a){
-        int l=0;
-        int r=arr.length-1;
-        int i=r/2;
-        while (arr[i]!=a && i!=0){
-            if (a>arr[i]) {
-                l=i+1;
-                i=(r+l)/2;
-            }
-            else 
-            if (a<arr[i]) {
-                r=i-1;
-                i=(r-l)/2;
+
+    public int binarySearch(int[] arr, int a) {
+        int l = 0;
+        int r = arr.length - 1;
+        int i = r / 2;
+        while (arr[i] != a && i != 0) {
+            if (a > arr[i]) {
+                l = i + 1;
+                i = (r + l) / 2;
+            } else if (a < arr[i]) {
+                r = i - 1;
+                i = (r - l) / 2;
             }
         }
-        if (a==arr[i]) return i;
+        if (a == arr[i]) {
+            return i;
+        }
         return -1;
     }
 }

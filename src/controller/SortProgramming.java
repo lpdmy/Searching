@@ -89,11 +89,13 @@ public class SortProgramming extends Menu<String> {
 
             @Override
             public void execute(int n) {
-                 algorithm.buddleSort(array);
-                library.display(array);
-                int value = library.getInt("\nEnter number to find: ", 1, 100);
+                int value;
                 switch (n) {
-                    case 1:                                            
+
+                    case 1:
+                        algorithm.buddleSort(array);
+                        library.display(array);
+                        value = library.getInt("\nEnter number to find: ", 1, 100);
                         if (algorithm.linearSearch(array, value) == -1) {
                             System.out.println("No value in array");
                         } else {
@@ -101,7 +103,9 @@ public class SortProgramming extends Menu<String> {
                         }
                         break;
                     case 2:
-                       
+                        algorithm.buddleSort(array);
+                        library.display(array);
+                        value = library.getInt("\nEnter number to find: ", 1, 100);
                         if (algorithm.binarySearch(array, value) == -1) {
                             System.out.println("No value in array");
                         } else {

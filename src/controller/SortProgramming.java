@@ -9,13 +9,10 @@ import Common.Library;
 import model.Element;
 import view.Menu;
 
-/**
- *
- * @author ACER
- */
 public class SortProgramming extends Menu<String> {
 
-    static String[] mc = {"Bubble Sort", "Quick Sort", "Exit"};
+    static String[] mc = {"Sort", "Search", "Exit"};
+
     protected Library library;
     protected Algorithm algorithm;
     protected int[] array;
@@ -34,27 +31,91 @@ public class SortProgramming extends Menu<String> {
     }
 
     public void execute(int n) {
-
         switch (n) {
             case 1:
-                System.out.print("\nUnsort array: ");
-                library.display(array);
-                algorithm.buddleSort(array);
-                System.out.print("\nSorted array by Buddle Sort: ");
-                library.display(array);
-                System.out.println("");
+                sort();
                 break;
             case 2:
-                System.out.print("\nUnsort array: ");
-                library.display(array);
-                algorithm.quickSort(array, 0, size_array - 1);
-                System.out.print("\nSorted array by Quick Sort: ");
-                library.display(array);
-                System.out.println("");
+                search();
                 break;
             case 3:
                 System.exit(0);
         }
     }
 
+    public void sort() {
+        final String[] mcSort = {"Buddle Sort", "Quick Sort", "Exit"};
+        class SortMenu extends Menu<String> {
+
+            public SortMenu() {
+                super("Sort Option", mcSort);
+            }
+
+            @Override
+            public void execute(int n) {
+                System.out.println("Unsorted array: ");
+                switch (n) {
+                    case 1:
+                        library.display(array);
+                        algorithm.buddleSort(array);
+                        System.out.println("\nSorted array by Buddle Sort: ");
+                        library.display(array);
+                        System.out.println("");
+                        break;
+                    case 2:
+                        library.display(array);
+                        algorithm.quickSort(array, 0, size_array - 1);
+                        System.out.println("\nSorted array by Quick Sort: ");
+                        library.display(array);
+                        System.out.println("");
+                        break;
+                    case 3:
+                        System.exit(0);
+                        break;
+                }
+            }
+        }
+        SortMenu sm = new SortMenu();
+        sm.run();
+    }
+
+    public void search() {
+        final String[] mcSearch = {"Linear Search", "Binary Search", "Exit"};
+        class SearchMenu extends Menu<String> {
+
+            public SearchMenu() {
+                super("Search Option", mcSearch);
+            }
+
+            @Override
+            public void execute(int n) {
+                 algorithm.buddleSort(array);
+                library.display(array);
+                int value = library.getInt("\nEnter number to find: ", 1, 100);
+                switch (n) {
+                    case 1:                                            
+                        if (algorithm.linearSearch(array, value) == -1) {
+                            System.out.println("No value in array");
+                        } else {
+                            System.out.println("Found value: " + value + " at index: " + algorithm.linearSearch(array, value));
+                        }
+                        break;
+                    case 2:
+                       
+                        if (algorithm.binarySearch(array, value) == -1) {
+                            System.out.println("No value in array");
+                        } else {
+                            System.out.println("Found value: " + value + " at index: " + algorithm.binarySearch(array, value));
+                        }
+                        break;
+
+                    case 3:
+                        System.exit(0);
+                        break;
+                }
+            }
+        }
+        SearchMenu sm = new SearchMenu();
+        sm.run();
+    }
 }

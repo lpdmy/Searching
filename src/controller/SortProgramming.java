@@ -11,7 +11,7 @@ import view.Menu;
 
 public class SortProgramming extends Menu<String> {
 
-    static String[] mc = {"Sort", "Search", "Exit"};
+    static String[] mc = {"Linear Search", "Binary Search", "Exit"};
 
     protected Library library;
     protected Algorithm algorithm;
@@ -30,68 +30,10 @@ public class SortProgramming extends Menu<String> {
         //array = library.createArray(size_array);
     }
 
-    public void execute(int n) {
-        switch (n) {
-            case 1:
-                sort();
-                break;
-            case 2:
-                search();
-                break;
-            case 3:
-                System.exit(0);
-        }
-    }
-
-    public void sort() {
-        final String[] mcSort = {"Buddle Sort", "Quick Sort", "Exit"};
-        class SortMenu extends Menu<String> {
-
-            public SortMenu() {
-                super("Sort Option", mcSort);
-            }
-
-            @Override
-            public void execute(int n) {
-                System.out.println("Unsorted array: ");
-                switch (n) {
-                    case 1:
-                        library.display(array);
-                        algorithm.buddleSort(array);
-                        System.out.println("\nSorted array by Buddle Sort: ");
-                        library.display(array);
-                        System.out.println("");
-                        break;
-                    case 2:
-                        library.display(array);
-                        algorithm.quickSort(array, 0, size_array - 1);
-                        System.out.println("\nSorted array by Quick Sort: ");
-                        library.display(array);
-                        System.out.println("");
-                        break;
-                    case 3:
-                        System.exit(0);
-                        break;
-                }
-            }
-        }
-        SortMenu sm = new SortMenu();
-        sm.run();
-    }
-
-    public void search() {
-        final String[] mcSearch = {"Linear Search", "Binary Search", "Exit"};
-        class SearchMenu extends Menu<String> {
-
-            public SearchMenu() {
-                super("Search Option", mcSearch);
-            }
-
-            @Override
+    @Override
             public void execute(int n) {
                 int value;
                 switch (n) {
-
                     case 1:
                         algorithm.buddleSort(array);
                         library.display(array);
@@ -118,8 +60,6 @@ public class SortProgramming extends Menu<String> {
                         break;
                 }
             }
-        }
-        SearchMenu sm = new SearchMenu();
-        sm.run();
-    }
+
+   
 }
